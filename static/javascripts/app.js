@@ -1,23 +1,4 @@
-/**
- * Register delegated event listener.
- *
- * @param {string} selector CSS selector.
- * @param {string} event Event name.
- * @param {(event: Event) => void} handler Callback function.
- */
-function Event(selector, event, handler) {
-  document.body.addEventListener(
-    event,
-    (e) => {
-      const targetElement = e.target.closest(selector);
-      if (targetElement) {
-        handler.call(targetElement, e);
-      }
-    },
-    { capture: true },
-  );
-}
-
+import { Event, getData } from "./utility.mjs";
 
 async function Api(api = "oragnize_files_api") {
   try {
@@ -39,5 +20,7 @@ async function Api(api = "oragnize_files_api") {
 
 Event("#organize_files_btn", "click", () => Api("oragnize_files_api"));
 Event("#remove_empty_folders_btn", "click", () => Api("remove_empty_folders_api"));
-Event("#remove_duplicate_files_btn", "click", () => Api("remove_duplicate_files"));
-
+Event("#remove_duplicate_files_btn", "click", () => Api("remove_duplicate_files_api"));
+Event("#log-btn", "click", async () => {
+  document.querySelector("main").innerHTML = `<div>${await getData("../static/info.log", "text")}</div>`
+})

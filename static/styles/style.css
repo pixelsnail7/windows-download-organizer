@@ -65,3 +65,33 @@ main {
 .z button {
   background-color: tomato;
 }
+
+.success {
+  color: #5cbb24;
+}
+
+.error {
+  color: tomato;
+}
+
+.time {
+  color: #0059ff;
+}
+
+#log-btn {
+  margin-top: 1rem;
+  border: 2px solid #275ccc;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  background-color: color(from #275ccc srgb r g b / 0.2);
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(95%);
+  }
+
+  * {
+    color: #0059ff !important;
+  }
+}
